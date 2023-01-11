@@ -1,0 +1,35 @@
+@if (isset($errors) && count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul class="list-unstyled mb-0">
+            @foreach ($errors->all() as $error)
+                <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+@if (isset($success) && count($success) > 0)
+    <div class="alert alert-success">
+        <ul class="list-unstyled mb-0">
+            @foreach ($success->all() as $value)
+                <li>{{$value}}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+@if (Session::get('success', false))
+    <?php $data = Session::get('success'); ?>
+        @if (is_array($data))
+            @foreach ($data as $succes)
+                <div class="alert alert-success">
+                    <i class="check"></i>
+                    {{$success}}
+                </div>
+            @endforeach
+        @else
+            <div class="alert alert-success">
+                <i class="check"></i>
+                {{$data}}
+            </div>
+        @endif
+
+@endif
