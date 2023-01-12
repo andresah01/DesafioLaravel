@@ -17,15 +17,15 @@ class CitaController extends Controller
     public function agendar(CitaRequest $request){
         $fecha_cita = Carbon::create($request->input("fechaCita")." ".$request->input("horaCita"));
         $documento = $request->input('documento');
-        // Validar si el cliente ya existe en la BD, si no existe, procedemos a crearlo
-        if(Cliente::validar_cliente($documento)){
-            $cliente = $request->only('documento','nombre','apellidos');
-            Cliente::crear_cliente($cliente);
-        }
         // Validar si la fecha y hora de la cita estan disponibles, si no estan disponibles,
         // redireccionamos hacia el formulario indicando que la fecha no esta disponible
         if(!self::validar_fecha($fecha_cita)){
             return redirect()->route('cita.agendar')->withErrors('Ya hay una cita programada/en transcurso para ese horario, por favor seleccione otra fecha.');
+        }
+        // Validar si el cliente ya existe en la BD, si no existe, procedemos a crearlo
+        if(Cliente::validar_cliente($documento)){
+            $cliente = $request->only('documento','nombre','apellidos');
+            Cliente::crear_cliente($cliente);
         }
         $cita = [
             'fecha_cita' => $fecha_cita->format('Y-m-d H:i:00'),
