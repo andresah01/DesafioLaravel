@@ -66,7 +66,7 @@
                         @endforeach
                         </select>
                     </div>
-                    <div class="form-group" style="display: flex; justify-content: center; align-items: center;">
+                    <div class="form-group" style="display: flex; justify-content: center; align-items: center; gap: 10px;">
                         <a href="{{route('cita.listar_por_fecha')}}" class="btn btn-secondary inline" role="button" id="volver" name="volver"> Volver </a>
                         <button class="btn btn-success" type="submit" id="actualizarCita" name="actualizarCita"> Actualizar cita </button>
                     </div>
