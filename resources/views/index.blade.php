@@ -1,6 +1,6 @@
 @extends('tema.main')
 
-@section('titulo', 'Menu')
+@section('titulo', 'Inicio')
 
 @section('contenido')
     <div class="frames-container-application" style="display: grid; place-items: center;">
